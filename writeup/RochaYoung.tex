@@ -1,0 +1,454 @@
+% This is file JFM2esam.tex
+% first release v1.0, 20th October 1996
+%       release v1.01, 29th October 1996
+%       release v1.1, 25th June 1997
+%       release v2.0, 27th July 2004
+%       release v3.0, 16th July 2014
+%   (based on JFMsampl.tex v1.3 for LaTeX2.09)
+% Copyright (C) 1996, 1997, 2014 Cambridge University Press
+
+\documentclass{jfm}
+\usepackage{graphicx}
+\usepackage{epstopdf, epsfig}
+
+
+
+%% AMS mathsymbols are enabled with
+\usepackage{amssymb,amsmath}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\shorttitle{Geostrophic turbulence driven by wind stress}
+\shortauthor{Rocha and Young}
+
+\title{Homogeneous quasigeostrophic turbulence driven by a uniform wind stress}
+
+% \author{Cesar B. Rocha
+%   \corresp{\email{crocha@ucsd.edu}}
+%  \and  William R. Young
+%  }
+\author{Cesar B. Rocha and William R. Young
+ }
+
+\affiliation{Scripps Institution of Oceanography,
+University of California San Diego, La Jolla, CA, USA}
+
+% our symbols
+% A nice definition
+\newcommand{\defn}{\ensuremath{\stackrel{\mathrm{def}}{=}}}
+
+% space in equations
+\newcommand{\qqand}{\qquad \text{and} \qquad}
+\newcommand{\qand}{\quad \text{and} \quad}
+
+% equations
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+
+\def\bea{\begin{align}}
+\def\ena{\end{align}}
+
+\newcommand{\com}{\, ,}
+\newcommand{\per}{\, .}
+\newcommand{\lap}{\triangle}
+\newcommand{\ssd}{\kappa_4 \triangle_2}
+\newcommand{\avxy}[1]{\langle{#1}\rangle}
+\newcommand{\nmax}{\mathsf{N}}
+\newcommand{\jacob}[2]{\mathsf{J}(#1,#2)}
+\newcommand{\diss}{\mathcal{D}}
+\newcommand{\disse}{\mathcal{D}_e}
+\newcommand{\dissens}{\mathcal{D}_{ens}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\dd}{\rm d}
+\newcommand{\half}{\tfrac{1}{2}}
+\newcommand{\sE}{\mathsf{E}}
+\newcommand{\sZ}{\mathsf{Z}}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{abstract}
+Abstract. Only outline so far.
+\end{abstract}
+
+
+
+\begin{keywords}
+
+\end{keywords}
+
+\section{Introduction}\label{sec:introduction}
+
+We present a simplest model of macroscopic homogeneous turbulent dynamics driven
+by a uniform wind stress. The model consists of two components: (i) an evolution
+equation for the domain-averaged, large-scale velocity and (ii) an evolution
+equation for the potential vorticity anomaly about the domain-averaged. The wind
+stress drives large-scale geostrophic currents. Large-scale available potential
+energy is converted into eddy energy through baroclinic instability that tends to
+relax the tilting of the isopycnals associated with the large-scale geostrohic flow.
+The momentum imparted by the wind is transferred downwards through interfacial
+form stresses (eddy potential vorticity fluxes) and dissipated by bottom friction
+or topographic stresses. Contrary to the standard quasigeostrophic turbulence
+model, which fixes the large-scale velocity, our   model allows for the eddies to
+feedback onto the large-scale flow. This entails conservation of total mechanical
+energy and potential enstrophy. The properties of the model are explored in
+turbulence simulations in two-layer and three-layer systems.
+
+Describe the homogeneous limit. The standard model and the new model, the simplest
+model for Gill, Anderson, and Simons.
+
+The more direct motivation is that we want to conserve mechanical energy in a model
+similar to the standard model. The model can be slightly more formally justified.
+While we were not successful in obtaining a genuinely formal derivation, we
+believe that this model may prove as useful as the standard model.
+
+
+Quasigeostrophic (QG) turbulence is typically driven by baroclinic instability
+of a large-scale flow. In a $\nmax$-layer system, the dynamics is governed by
+\beq \label{pvt}
+{q_n}_t + U_n {q_n}_x + \jacob{\psi_n}{q_n} + G_n {\psi_n}_x = \diss_n \com
+\eeq
+where $U_n$ is the large-scale velocity and $G_n$ is large-scale potential
+vorticity gradient, and $\diss_n$ represent dissipative terms.
+Also in \eqref{pvt}, the QG potential vorticity is
+\begin{equation}
+\left. \begin{array}{l}
+\displaystyle
+   \label{pv}
+   {q_1} = \lap\psi_1 + F_{11} \left(\psi_{2}-\psi_1\right)\com \\
+   {q_n} = \lap\psi_n - F_{n-1,n} \left(\psi_{n}-\psi_{n-1}\right) +
+           F_{n,n}\left(\psi_{n+1}-\psi_{n}\right) \com  n=2,\cdots,\nmax-1\com \\
+    {q_{\nmax}} = \lap\psi_{\nmax} - F_{{\nmax}-1,{\nmax}}\left(\psi_{{\nmax}}-
+    \psi_{\nmax-1}
+    \right) + \frac{f_0}{h_{\nmax}}\eta_b \com
+\end{array} \right\}
+\end{equation}
+and $F_{ij} = f_0^2/(g'_i h_j)$ with the buoyancy jump $g'_i =
+g (\rho_{i+1}-\rho_k)/\rho_{i+1}$.
+Also in \eqref{pvt} the large-scale potential vorticity gradients are
+\beq \label{Gn}
+\left. \begin{array}{l}
+G_1 = \beta + F_{1,1}(U_1-U_2)\com\\
+G_n = \beta - F_{n-1,n}(U_{n-1}-U_n) + F_{n,n}(U_n-U_{n+1})\com n=2,\cdots,\nmax-1
+\com\\
+G_\nmax = \beta - F_{\nmax-1,\nmax}(U_{\nmax-1}-U_\nmax)\per
+\end{array} \right\}
+\eeq
+
+
+In calculations of homogeneous QG turbulence driven by baroclinic instability,
+most investigators prescribe a uniform and stationary large-scale shear is
+prescribed \citep[e.g.,][]{haidvogel_held1980,thompson_young2007}. The idea appears
+to be inspired by linear stability calculations and it goes back to
+\cite{bretherton_karweit1975}.
+
+An important limitation of this ``standard model'' is the lack of conservation
+of mechanical energy. Because there is no feedback of eddies onto the large-scale
+flow, the base-state shear remains stationary and, consequently, there is an
+infinite source of potential energy available to be converted into eddy energy.
+In other words, the standard model ignores an important halt mechanism for the
+perturbation growth: there is no tendency to relax the large-scale isopycnal
+tilting.
+
+In this study, we put forward the simplest model of homogeneous geostrophic
+turbulence that conserved total mechanical energy. The
+large-scale velocity is uniform for the sake of homogeneity and it is governed by
+\beq \label{Unt}
+{\dot U_n} = \avxy{v_n q_n} + \tfrac{\tau}{h_1} \delta_{n,\nmax} -
+\mu U_{\nmax}\delta_{n,\nmax} \com
+\eeq
+where the dot represents time derivative, $\avxy{.}$ denotes horizontal spatial
+average, $\tau$ is a uniform wind stress and $\mu$ is a bottom drag.
+This model is posed in order  analogy to its barotropic version
+\citep{carnevale_frederiksen1987}. In Appendix \ref{appE} we present
+derivation using multiple scale asymptotics.
+
+To our
+knowledge, the only exception is \cite{salmon1980}, which included an equation for
+the large-scale available potential energy driven by a constant body force (see
+his equation 4.1).
+
+\section{Quadratic conservation laws}\label{sec:cons_laws}
+
+\subsection{Mechanical energy}
+
+To form an eddy mechanical energy equation we multiply \eqref{pvt} by
+$-h_n \psi_n$, average over the domain, and sum on $n$, to obtain
+
+\beq\label{eddyee}
+  \frac{\dd}{\dd t}\half \left[\sum_{n=1}^{\nmax} h_n \avxy{|\nabla \psi_n|^2} +
+  \sum_{n=1}^{\nmax-1} S_n \avxy{(\psi_n-\psi_{n+1})^2}\right]
+  = \sum_{n=1}^{\nmax-1} S_n (U_n - U_{n+1})\avxy{\psi_n{\psi_{n+1}}_x}
+  + \disse\com
+\eeq
+where $S_n \defn h_n F_{n,n} = h_{n+1} F_{n,n+1}$ and $D_e$ represent dissipation
+of eddy mechanical energy. The first term on the right of \eqref{eddyee} represent
+the rate of generation of eddy mechanical energy due to conversion of
+available potential energy (APE) associated with the large-scale shear. In the
+standard model, this term represent an infinite source of APE. Equilibration is
+only achieved through non-linear transfers plus dissipation and to decoherence
+of the eddy field that reduces the correlation $\avxy{\psi_n{\psi_{n+1}}_x}$.
+
+In the present model, the large-scale energy is  governed by
+\beq \label{largescaleee}
+\frac{\dd}{\dd t}\half \sum_{n=1}^{\nmax} h_n U_n^2 =
+- \sum_{n=1}^{\nmax-1} S_n (U_n - U_{n+1})\avxy{\psi_n{\psi_{n+1}}_x}
++ \tau U_1 - \mu U_{\nmax}^2\com
+\eeq
+where we used the handy identities in Appendix B. Thus, in the absence of
+forcing and dissipation, the model \eqref{pvt} through \eqref{Unt} conserves
+total mechanical energy
+\beq\label{meche}
+\sE \defn  \half \left[\sum_{n=1}^{\nmax} h_n \left(\avxy{|\nabla \psi_n|^2} +
+U_n^2\right) + \sum_{n=1}^{\nmax-1} S_n \avxy{(\psi_n-\psi_{n+1})^2}\right] \per
+\eeq
+
+\subsection{Potential enstrophy}
+Similarly to the energy problem, the standard model has an infinite source of
+available potential enstrophy. Appendix \ref{appEns} shows that the model \eqref{pvt} through
+\eqref{Unt} conserves the potential enstrophy
+\beq \label{pens}
+\sZ \defn \half \left[\sum_{n=1}^{\nmax} h_n \avxy{q_n^2} + 2 h_n \beta U_n
++ \sum_{n=1}^{\nmax-1} S_n (U_n - U_{n+1})^2\right]\per
+\eeq
+
+\section{Two-layer calculations}\label{sec:two_layer}
+
+In the classic two-layer system, the QGPVs \eqref{pv} reduce to
+\begin{equation}
+\left. \begin{array}{l}
+\displaystyle
+   \label{pv2}
+   {q_1} = \lap\psi_1 + F_{11} \left(\psi_{2}-\psi_1\right)\com \\
+   {q_2} = \lap\psi_2 - F_{12}\left(\psi_{2}-\psi_1\right) +
+   \frac{f_0}{h_2}\eta_b \com
+\end{array} \right\}
+\end{equation}
+and are governed by
+\begin{equation}\label{pv_evolution2}
+\left. \begin{array}{l}
+\displaystyle
+\left(\p_t + U_1 \p_x\right) q_1  + \jacob{\psi_1}{q_1} + G_1 \p_x \psi_1
+= \ssd q_1 \com\\
+\left(\p_t + U_2 \p_x\right) q_2  + \jacob{\psi_2}{q_2}+ G_2 \p_x \psi_2
+= \ssd \left(q_2-\frac{f_0}{h_2}\eta_b\right) - \mu \lap \psi_2 \com
+\end{array} \right\}
+\end{equation}
+where we introduced the fourth order hyperdiffusion with $\triangle_2 \defn
+(\p_x^2+\p_y^2)^2$ to represent the small scale dissipation, and a linear
+bottom drag with a barotropic damping scale $h/h_2 \, \mu^{-1}$ to
+dissipate the large-scale flows. Also the large-scale velocity is governed by
+\begin{equation}\label{slowUevolution2}
+\left. \begin{array}{l}
+\displaystyle
+    \dot U_1  = \la v_1 q_1 \ra + \tau/h_1 \com \\
+    \dot U_2  = \la v_2 q_2 \ra - \mu U_2  \com
+  \end{array} \right\}
+\end{equation}
+
+\section{Three-layer calculations}\label{sec:two_layer}
+
+In this model, the quasigeostrophic (QG) potential vorticity
+in each layer is:
+\begin{equation}
+\left. \begin{array}{l}
+\displaystyle
+   \label{pv3}
+   {q_1} = \lap\psi_1 + F_{11} \left(\psi_{2}-\psi_1\right)\com \\
+   {q_2} = \lap\psi_2 - F_{12} \left(\psi_{2}-\psi_1\right) +
+              F_{22}\left(\psi_{3}-\psi_2\right) \com \\
+              {q_3} = \lap\psi_3 - F_{23}\left(\psi_{3}-\psi_2\right) +
+              \frac{f_0}{h_3}\eta_b \com
+\end{array} \right\}
+\end{equation}
+
+\begin{equation}
+\left. \begin{array}{l}
+\displaystyle
+   \label{pvevolution3}
+\left(\p_t + U_1 \p_x\right) q_1  + \jacob{\psi_1}{q_1} + G_1 \p_x \psi_1
+= \ssd q_1 \com \\
+\left(\p_t + U_2 \p_x\right) q_2  + \jacob{\psi_2}{q_2}+ G_2 \p_x \psi_2
+= \ssd q_2 \com \\
+\left(\p_t + U_3 \p_x\right) q_3  + \jacob{\psi_3}{q_3} + G_3 \p_x \psi_3
+= \ssd \left(q_3-\frac{f_0}{h_3}\eta_b\right) -\mu \lap \psi_3 \com
+\end{array} \right\}
+\end{equation}
+\begin{equation}
+\left. \begin{array}{l}
+\displaystyle
+   \label{slowUevolution3}
+    \dot U_1  = \la v_1 q_1 \ra + \tau/h_1 \com    \\
+    \dot U_2  = \la v_2 q_2 \ra   \com  \\
+    \dot U_3  = \la v_3 q_3 \ra - \mu U_3  \com
+  \end{array} \right\}
+\end{equation}
+
+\subsection{Potential vorticity homogenization}
+
+
+\subsection{Summary and conclusions}
+This model may be regarded as the simplest paradigm  of macroscopic turbulent
+dynamics driven by surface forcing and equilibrated through baroclinic instability.
+Thus, the steady state represents the paradigm first proposed by
+\citep{johnson_bryden1989} to study the Antarctic Circumpolar Current.
+
+
+
+Understanding of properties of this model may be useful  in understanding
+properties of macroscopic turbulent ocean and climate dynamics \citep{held2005}.
+
+
+Acknowledgements: Thanks!
+
+\clearpage
+
+\appendix
+
+\section{Useful identities}
+The following identities for the PV fuxes are useful
+\begin{align}
+\label{pvfluxes}
+\avxy{v_1 q_1} &=  \avxy{{\psi_1}_x \underbrace{F_{11}\left(\psi_2 -
+\psi_1\right)}_{=f_0 \eta_1/h_1}} = -\frac{f_0}{h_1}  \avxy{\psi_1 {\eta_1}_x}
+\nonumber \com \\
+\avxy{v_n q_n} &= -\avxy{{\psi_n}_x \underbrace{F_{n-1,n}\left(\psi_n -\psi_{n-1}
+\right)}_{=f_0 \eta_{n-1}/h_n}}  + \avxy{\psi_n \underbrace{F_{n,n}\left(\psi_{n+1}
+-\psi_n\right)}_{=f_0 \eta_{n}/h_n}} \nonumber \\&=
+\frac{f_0}{h_n}\avxy{\psi_{n-1} {\eta_{n-1}}_x}
+- \frac{f_0}{h_n}\avxy{\psi_{n+1} {\eta_n}_x}\com \nonumber \\
+\avxy{v_\nmax q_\nmax} &=  -\avxy{\p_x \psi_3 \underbrace{F_{23}\left(\psi_3 -
+\psi_2\right)}_{=f_0 \eta_2/h_3}} + \frac{f_0}{h_3}\avxy{\p_x \psi_3 \eta_b}=
+\frac{f_0}{h_\nmax} \avxy{\psi_\nmax {\eta_{\nmax-1}}_x} + \frac{f_0}{h_\nmax}
+\avxy{\psi_\nmax {\eta_b}_x}\per
+\end{align}
+Thus
+\beq
+\label{pvfluxes_sum}
+\sum_{n=1}^\nmax  h_n \avxy{v_n q_n} = \frac{f_0}{h_\nmax}\avxy{\psi_\nmax
+{\eta_b}_x} \per
+\eeq
+Note that the barotropic large-scale flow is governed by
+\beq \label{Ubtt}
+\frac{\dd}{\dd t}\half \sum_{n=1}^{\nmax}h_n U_n = \tau
++ \frac{f_0}{h_\nmax}\avxy{\psi_\nmax
+{\eta_b}_x} - \mu h_\nmax U_{\nmax}\per
+\eeq
+The momentum imparted by the  wind stress is removed through topographic stress
+and bottom drag. In the limit of small bottom drag, one obtain the \cite{munk_palmen1951}
+ balanced, which is typically invoked in models of the Antarctic Circumpolar
+Current.
+
+\section{Potential enstrophy conservation}\label{appEns}
+To form a potential enstrophy equation we multiply the potential vorticity equation
+by $h_n q_n$, average horizontally, and sum on n, to obtain
+\beq \label{enst}
+\frac{\dd}{\dd t}\half \sum_{n=1}^{\nmax} h_n \avxy{q_n^2} +
+\sum_{n=1}^{\nmax} h_n G_n \avxy{v_n q_n} = \dissens\per
+\eeq
+The large-scale momentum equation \eqref{Unt} can be used to eliminate the
+potential vorticity flux term in \eqref{enst}
+\begin{align}\label{enst2}
+\frac{\dd}{\dd t}\half &\sum_{n=1}^{\nmax} \left(h_n \avxy{q_n^2} + 2 h_n \beta U_n\right)
+ - \sum_{n=2}^{\nmax-1} h_n \left[F_{n-1,n}(U_{n-1}-U_n) - F_{n,n}(U_n - U_{n+1})
+\right]{\dot U_n} \nonumber \\&+ h_1 F_{1,1}(U_1-U_2){\dot U_1}
+- F_{\nmax-1,\nmax}(U_{\nmax-1} -U_\nmax){\dot U_\nmax}
+= G_1 \tau + \dissens - \mu h_\nmax G_\nmax \per
+\end{align}
+Noting the intermediate result
+\beq \label{interUt}
+\left(U_n - U_{n+1}\right)\dot{U}_n = \frac{\dd}{\dd t} \half
+\left(U_n - U_{n+1}\right)^2 +  \left(U_n - U_{n+1}\right)\dot{U}_{n+1}\com
+\eeq
+we obtain the potential enstrophy equation
+\beq\label{Zeqn}
+\frac{\dd}{\dd t} \sZ  = G_1 \tau + \dissens - \mu h_\nmax G_\nmax\com
+\eeq
+where
+\beq\label{Zdefn}
+\sZ \defn \half \left[\sum_{n=1}^{\nmax} h_n \avxy{q_n^2} + 2 h_n \beta U_n
++ \sum_{n=1}^{\nmax-1} S_n (U_n - U_{n+1})^2\right]\per
+\eeq
+
+Thus $\sZ$ is conserved in the forceless-dissipationless limit.
+
+\section{A quasi-derivation of the new model}\label{appE}
+
+\subsection{Two meridional scale expansion}
+
+\subsection{Connections to TEM}
+
+
+\section{Details of numerical computations}\label{num}
+
+\subsection{The numerical model}
+
+\subsection{Sensitivity to small scale dissipation}
+
+\bibliographystyle{jfm}
+% Note the spaces between the initials
+\bibliography{RochaYoung.bib}
+
+\end{document}
+
+
+%\subsection{Figures}
+%Figures should be as small as possible while displaying clearly all the information required, and with all lettering readable. Every effort should be taken to avoid figures that run over more than one page. Figures submitted in colour will appear online in colour but, with the exception of {\it JFM Rapids}, all figures will be printed in black and white unless authors specify during submission that figures should be printed in colour, for which there is a charge of \pounds200 plus VAT per figure (i.e. \pounds240) with a cap of \pounds1000 plus VAT per article (i.e. \pounds1200) (colour is free for {\it JFM Rapids}).  Note that separate figures for online and print will {\bf not} be accepted and it is the author's responsibility to ensure that if a figure is to appear in colour online only, that same figure will still be meaningful when printed in black and white (for example, do not rely upon colours to distinguish lines if those colours will just appear as similar shades of grey when printed). If using colour, authors should also ensure that some consistency is applied within the manuscript. For review purposes figures should be embedded within the manuscript. Upon final acceptance, however, individual figure files will be required for production. These should be submitted in EPS or high-resolution TIFF format (1200 dpi for lines, 300 dpi for halftone and colour in CMYK format, and 600 dpi for a mixture of lines and halftone). The minimum acceptable width of any line is 0.5pt. Each figure should be accompanied by a single caption, to appear beneath, and must be cited in the text. Figures should appear in the order in which they are first mentioned in the text and figure files must be named accordingly (`Figure 1.eps', `Figure 2a.tiff', etc) to assist the production process (and numbering of figures should continue through any appendices). The word \textit {figure} is only capitalized at the start of a sentence. For example see figures \ref{fig:ka} and \ref{fig:kd}. Failure to follow figure guidelines may result in a request for resupply and a subsequent delay in the production process. Note that {\em all} figures are relabelled by the typesetter, so please ensure all figure labels are carefully checked against your originals when you receive your proofs.
+%
+%\begin{figure}
+%  \centerline{\includegraphics{trapped}}% Images in 100% size
+%  \caption{Trapped-mode wavenumbers, $kd$, plotted against $a/d$ for
+%    three ellipses:\protect\\
+%    ---$\!$---,
+%    $b/a=1$; $\cdots$\,$\cdots$, $b/a=1.5$.}
+%\label{fig:ka}
+%\end{figure}
+%
+%\begin{figure}
+%  \centerline{\includegraphics{modes}}
+%  \caption{The features of the four possible modes corresponding to
+%  (\textit{a}) periodic\protect\\ and (\textit{b}) half-periodic solutions.}
+%\label{fig:kd}
+%\end{figure}
+%
+%\subsection{Tables}
+%Tables, however small, must be numbered sequentially in the order in which they are mentioned in the text. The word \textit {table} is only capitalized at the start of a sentence. See table \ref{tab:kd} for an example.
+%
+%\begin{table}
+%  \begin{center}
+%\def~{\hphantom{0}}
+%  \begin{tabular}{lccc}
+%      $a/d$  & $M=4$   &   $M=8$ & Callan \etal \\[3pt]
+%       0.1   & 1.56905 & ~~1.56~ & 1.56904\\
+%       0.3   & 1.50484 & ~~1.504 & 1.50484\\
+%       0.55  & 1.39128 & ~~1.391 & 1.39131\\
+%       0.7   & 1.32281 & ~10.322 & 1.32288\\
+%       0.913 & 1.34479 & 100.351 & 1.35185\\
+%  \end{tabular}
+%  \caption{Values of $kd$ at which trapped modes occur when $\rho(\theta)=a$}
+%  \label{tab:kd}
+%  \end{center}
+%\end{table}
+
+%\section{Citations and references}
+%All papers included in the References section must be cited in the article, and vice versa. Citations should be included as, for example ``It has been shown \citep{Rogallo81} that...'' (using the {\verb}\citep} command, part of the natbib package) ``recent work by \citet{Dennis85}...'' (using {\verb}\citet}).
+%The natbib package can be used to generate citation variations, as shown below.\\
+%\verb#\citet[pp. 2-4]{Hwang70}#:\\
+%\citet[pp. 2-4]{Hwang70} \\
+%\verb#\citep[p. 6]{Worster92}#:\\
+%\citep[p. 6]{Worster92}\\
+%\verb#\citep[see][]{Koch83, Lee71, Linton92}#:\\
+%\citep[see][]{Koch83, Lee71, Linton92}\\
+%\verb#\citep[see][p. 18]{Martin80}#:\\
+%\citep[see][p. 18]{Martin80}\\
+%\verb#\citep{Brownell04,Brownell07,Ursell50,Wijngaarden68,Miller91}#:\\
+%\citep{Brownell04,Brownell07,Ursell50,Wijngaarden68,Miller91}\\
+%The References section can either be built from individual \verb#\bibitem# commands, or can be built using BibTex. The BibTex files used to generate the references in this document can be found in the zip file at http://journals.cambridge.org/\linebreak[3]data/\linebreak[3]relatedlink/\linebreak[3]jfm-ifc.zip.\\
+%Where there are up to ten authors, all authors' names should be given in the reference list. Where there are more than ten authors, only the first name should appear, followed by et al.\\
+%
+%Acknowledgements should be included at the end of the paper, before the References section or any appendicies, and should be a separate paragraph without a heading. Several anonymous individuals are thanked for contributions to these instructions.
